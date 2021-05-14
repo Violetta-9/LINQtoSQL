@@ -38,9 +38,19 @@ namespace LINQtoSQL
                 }
 
             }
+            var db1 = new DataContext(connectionString);
+            var count = db1.GetTable<Players>().Count();
+            if (count>0)
+            {
 
+                var query = db1.GetTable<Players>().Skip(1).Take(2);
 
-            
+                foreach (var item in query)
+                {
+                    Console.WriteLine("{0} \t{1} \t{2}", item.PlayerId, item.Name, item.Age);
+                }
+            }
+
 
         }
     }
