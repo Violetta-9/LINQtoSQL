@@ -20,11 +20,27 @@ namespace LINQtoSQL
                               where item.Age > 18
                               orderby item.Name
                               select item;
-            var plauersSwap=players.Where()
-            foreach (var item in plauersswap)
+
+            var plauersSwap = players.Where(item => item.Age >= 18).OrderBy(item => item.Age).ThenBy(item => item.PlayerId);
+            foreach (var item in plauersSwap)
             {
-                Console.WriteLine("{0} \t{1} \t{2} \t{3}",item.PlayerId, item.Name,item.Position, item.Age);
+                Console.WriteLine("{0} \t{1} \t{2} \t{3}", item.PlayerId, item.Name, item.Position, item.Age);
             }
+           
+            var playerGroyps = players.GroupBy(item => item.Age);
+            foreach (var item in playerGroyps)
+            {
+                Console.WriteLine($"Key{item.Key}");
+                foreach (var items in item)
+                {
+                    Console.WriteLine(items.Name);
+
+                }
+
+            }
+
+
+            
 
         }
     }
