@@ -51,6 +51,14 @@ namespace LINQtoSQL
                 }
             }
 
+            var players1=players.FirstOrDefault();
+            players1.Name = "Алеся";
+            db.SubmitChanges();
+            Console.WriteLine();
+            foreach (var item in players)
+            {
+                Console.WriteLine("{0} \t{1} \t{2}", item.PlayerId, item.Name, item.Age);
+            }
 
         }
     }
