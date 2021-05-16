@@ -109,7 +109,18 @@ namespace LINQtoSQL
             //{
             //    Console.WriteLine("{0} \t{1} \t{2}", item.PlayerId, item.Name, item.Age);
             //}
+            int modifedRowsNumber = db.ExecuteCommand("DELETE FROM Players WHERE Id={0}", 53);// для удаления объекта по id...принимает выполняемое sql-выражение и список параметров
 
+            foreach (var item in players)
+            {
+                Console.WriteLine("{0} \t{1} \t{2}", item.PlayerId, item.Name, item.Age);
+            }
+            var playersSELECt = db.ExecuteQuery<Players>("SELECT * FROM Players WHERE Age>{0}", 18);// возвращает результат выполнения запроса SELECT:
+
+            foreach (var item in playersSELECt)
+            {
+                Console.WriteLine($"Имя {item.Name}, Возраст{item.Age}");
+            }
         }
     }
 }
