@@ -121,6 +121,7 @@ namespace LINQtoSQL
             {
                 Console.WriteLine($"Имя {item.Name}, Возраст{item.Age}");
             }
+
         }
     }
 }
